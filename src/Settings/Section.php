@@ -8,12 +8,14 @@
 
 namespace JMichaelWard\GF_Structures\Settings;
 
+use JMichaelWard\GF_Structures\ArrayFormattable;
+
 /**
  * Class Section
  *
  * @package JMichaelWard\GF_Structures\Settings
  */
-class Section {
+class Section implements ArrayFormattable {
 	/**
 	 * The section title.
 	 *
@@ -87,4 +89,13 @@ class Section {
 	 * @var array
 	 */
 	private $fields;
+
+	/**
+	 * Gets this settings section, formatted as an array expected by the Gravity Forms settings API.
+	 *
+	 * @return array
+	 */
+	public function get_as_array() {
+		return array();
+	}
 }

@@ -8,12 +8,14 @@
 
 namespace JMichaelWard\GF_Structures\Settings;
 
+use JMichaelWard\GF_Structures\ArrayFormattable;
+
 /**
  * Class Field
  *
  * @package JMichaelWard\GF_Structures\Settings
  */
-class Field {
+class Field implements ArrayFormattable {
 	/**
 	 * The field type.
 	 *
@@ -222,4 +224,13 @@ class Field {
 	 * @var array
 	 */
 	private $html_attributes;
+
+	/**
+	 * Get the field values as an array formatted for Gravity Forms.
+	 *
+	 * @return array
+	 */
+	public function get_as_array() {
+		return array();
+	}
 }
