@@ -1,0 +1,13 @@
+{
+    "name": "jmichaelward/gf-structures",
+    "description": "A class-based library to streamline working with Gravity Forms array entities.",
+    "type": "library",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Jeremy Ward",
+            "email": "jeremy@jmichaelward.com"
+        }
+    ],
+    "require": {}
+}
