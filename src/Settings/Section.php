@@ -178,6 +178,28 @@ class Section implements SectionInterface {
 	}
 
 	/**
+	 * Set an array of fields onto the section.
+	 *
+	 * This is provided as a convenience method for developers who wish to create their fields array and then
+	 * pass it to the Section instead of calling add_field at each step.
+	 *
+	 * @param array $fields
+	 */
+	public function set_fields( array $fields ) {
+		try {
+			$this->fields = array();
+
+			foreach ( $fields as $field ) {
+				$this->add_field( $field );
+			}
+		} catch ( \TypeError $error ) {
+			throw new \TypeError(
+				__METHOD__ . ' parameter $fields contains elements not of type ' . __NAMESPACE__ . '\\Field.'
+			);
+		}
+	}
+
+	/**
 	 * Add a field to the section.
 	 *
 	 * @param Field $field
@@ -186,7 +208,7 @@ class Section implements SectionInterface {
 	 */
 	public function add_field( $field ) {
 		if ( ! $field instanceof Field ) {
-			throw new \TypeError( __METHOD__ . ' parameter $field must be instance of ' . __NAMESPACE__ . '\\Field' );
+			throw new \TypeError( __METHOD__ . ' parameter $field must be instance of ' . __NAMESPACE__ . '\\Field.' );
 		}
 
 		$this->fields[] = $field;
