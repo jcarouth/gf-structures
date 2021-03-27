@@ -226,11 +226,27 @@ class Field implements ArrayFormattable {
 	private $html_attributes;
 
 	/**
+	 * Field constructor.
+	 *
+	 * @param string $type The field type.
+	 * @param string $name The field name.
+	 */
+	public function __construct( $type, $name ) {
+		$this->type = $type;
+		$this->name = $name;
+	}
+
+	/**
 	 * Get the field values as an array formatted for Gravity Forms.
 	 *
 	 * @return array
 	 */
 	public function get_as_array() {
-		return array();
+		return array_filter(
+			array(
+				'type' => $this->type,
+				'name' => $this->name,
+			)
+		);
 	}
 }
