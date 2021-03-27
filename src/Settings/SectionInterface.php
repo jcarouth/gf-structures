@@ -16,20 +16,9 @@ use JMichaelWard\GF_Structures\ArrayFormattable;
  */
 interface SectionInterface extends ArrayFormattable {
 	/**
-	 * Set the section title.
+	 * Add a section field.
 	 *
-	 * @param string $title The section title.
-	 *
-	 * @return void
+	 * @param Field $field A Field object.
 	 */
-	public function set_title( $title );
-
-	/**
-	 * Set the section description.
-	 *
-	 * @param string $description The section description.
-	 *
-	 * @return void
-	 */
-	public function set_description( $description );
+	public function add_field( $field );
 }

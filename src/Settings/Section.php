@@ -127,6 +127,74 @@ class Section implements SectionInterface {
 	}
 
 	/**
+	 * Set the section ID.
+	 *
+	 * @param string $id
+	 *
+	 * @return Section
+	 */
+	public function set_id( $id ) {
+		if ( ! is_string( $id ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $id must be of type string.' );
+		}
+
+		$this->id = $id;
+
+		return $this;
+	}
+
+	/**
+	 * Set the section class string.
+	 *
+	 * @param string $class
+	 *
+	 * @return Section
+	 */
+	public function set_class( $class ) {
+		if ( ! is_string( $class ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $class must be of type string.' );
+		}
+
+		$this->class = $class;
+
+		return $this;
+	}
+
+	/**
+	 * Set the section class style.
+	 *
+	 * @param string $style
+	 *
+	 * @return Section
+	 */
+	public function set_style( $style ) {
+		if ( ! is_string( $style ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $style must be of type string.' );
+		}
+
+		$this->style = $style;
+
+		return $this;
+	}
+
+	/**
+	 * Add a field to the section.
+	 *
+	 * @param Field $field
+	 *
+	 * @return $this
+	 */
+	public function add_field( $field ) {
+		if ( ! $field instanceof Field ) {
+			throw new \TypeError( __METHOD__ . ' parameter $field must be instance of ' . __NAMESPACE__ . '\\Field' );
+		}
+
+		$this->fields[] = $field;
+
+		return $this;
+	}
+
+	/**
 	 * Gets this settings section, formatted as an array expected by the Gravity Forms settings API.
 	 *
 	 * Filters out any values that are empty.
