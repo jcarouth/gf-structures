@@ -21,4 +21,11 @@ interface SectionInterface extends ArrayFormattable {
 	 * @param Field $field A Field object.
 	 */
 	public function add_field( $field );
+
+	/**
+	 * Add an array of fields all at once.
+	 *
+	 * @param array $fields
+	 */
+	public function set_fields( array $fields );
 }
