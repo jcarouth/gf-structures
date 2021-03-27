@@ -36,12 +36,36 @@ class Page implements ArrayFormattable {
 	}
 
 	/**
+	 * Set an array of sections onto the page.
+	 *
+	 * This is provided as a convenience method for developers who wish to create their sections array and then
+	 * pass it to the Page instead of calling add_section at each step.
+	 *
+	 * @param array $sections
+	 */
+	public function set_sections( array $sections ) {
+		try {
+			$this->sections = array();
+
+			foreach ( $sections as $section ) {
+				$this->add_section( $section );
+			}
+		} catch ( \TypeError $error ) {
+			throw new \TypeError( __METHOD__ . ' parameter $fields contains elements not of type ' . __NAMESPACE__ . '\\Section.' );
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Add a section to the page.
 	 *
 	 * @param Section $section
 	 */
 	public function add_section( Section $section ) {
 		$this->sections[] = $section;
+
+		return $this;
 	}
 
 	/**

@@ -197,6 +197,8 @@ class Section implements SectionInterface {
 				__METHOD__ . ' parameter $fields contains elements not of type ' . __NAMESPACE__ . '\\Field.'
 			);
 		}
+
+		return $this;
 	}
 
 	/**
