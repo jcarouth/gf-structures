@@ -14,5 +14,48 @@ namespace JMichaelWard\GF_Structures\Settings;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Section {
+	/**
+	 * @var string
+	 */
+	private $title;
 
+	/**
+	 * @var string
+	 */
+	private $description;
+
+	/**
+	 * @var string
+	 */
+	private $id;
+
+	/**
+	 * @var string
+	 */
+	private $class;
+
+	/**
+	 * @var string
+	 */
+	private $style;
+
+	/**
+	 * @var string
+	 */
+	private $tooltip;
+
+	/**
+	 * @var string
+	 */
+	private $tooltip_class;
+
+	/**
+	 * @var string|array
+	 */
+	private $dependency;
+
+	/**
+	 * @var array
+	 */
+	private $fields;
 }
