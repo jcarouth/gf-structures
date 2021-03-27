@@ -244,8 +244,25 @@ class Field implements ArrayFormattable {
 	public function get_as_array() {
 		return array_filter(
 			array(
-				'type' => $this->type,
-				'name' => $this->name,
+				'type'                => $this->type,
+				'input_type'          => $this->input_type,
+				'name'                => $this->name,
+				'id'                  => $this->id,
+				'label'               => $this->label,
+				'required'            => $this->required,
+				'class'               => $this->class,
+				'tooltip'             => $this->tooltip,
+				'tooltip_class'       => $this->tooltip_class,
+				'hidden'              => $this->hidden,
+				'default_value'       => $this->default_value,
+				'horizontal'          => $this->horizontal,
+				'dependency'          => $this->dependency,
+				'choices'             => $this->choices,
+				'feedback_callback'   => $this->feedback_callback,
+				'callback'            => $this->callback,
+				'validation_callback' => $this->validation_callback,
+				'after_input'         => $this->after_input,
+				'field_map'           => $this->field_map,
 			)
 		);
 	}
