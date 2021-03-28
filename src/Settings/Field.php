@@ -237,6 +237,168 @@ class Field implements FieldInterface {
 	}
 
 	/**
+	 * @param string $input_type
+	 */
+	public function set_input_type( $input_type ) {
+		$this->input_type = $input_type;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $id
+	 */
+	public function set_id( $id ) {
+		$this->id = $id;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $label
+	 */
+	public function set_label( $label ) {
+		$this->label = $label;
+
+		return $this;
+	}
+
+	/**
+	 * @param bool $required
+	 */
+	public function set_required( $required ) {
+		$this->required = $required;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $class
+	 */
+	public function set_class( $class ) {
+		$this->class = $class;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $tooltip
+	 */
+	public function set_tooltip( $tooltip ) {
+		$this->tooltip = $tooltip;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $tooltip_class
+	 */
+	public function set_tooltip_class( $tooltip_class ) {
+		$this->tooltip_class = $tooltip_class;
+
+		return $this;
+	}
+
+	/**
+	 * @param bool $hidden
+	 */
+	public function set_hidden( $hidden ) {
+		$this->hidden = $hidden;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $default_value
+	 */
+	public function set_default_value( $default_value ) {
+		$this->default_value = $default_value;
+
+		return $this;
+	}
+
+	/**
+	 * @param bool $horizontal
+	 */
+	public function set_horizontal( $horizontal ) {
+		$this->horizontal = $horizontal;
+
+		return $this;
+	}
+
+	/**
+	 * @param Field $dependency
+	 */
+	public function set_dependency( $dependency ) {
+		$this->dependency = $dependency;
+
+		return $this;
+	}
+
+	/**
+	 * @param array $choices
+	 */
+	public function set_choices( $choices ) {
+		$this->choices = $choices;
+
+		return $this;
+	}
+
+	/**
+	 * @param array|string $feedback_callback
+	 */
+	public function set_feedback_callback( $feedback_callback ) {
+		$this->feedback_callback = $feedback_callback;
+
+		return $this;
+	}
+
+	/**
+	 * @param array|string $callback
+	 */
+	public function set_callback( $callback ) {
+		$this->callback = $callback;
+
+		return $this;
+	}
+
+	/**
+	 * @param array|string $validation_callback
+	 */
+	public function set_validation_callback( $validation_callback ) {
+		$this->validation_callback = $validation_callback;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $after_input
+	 */
+	public function set_after_input( $after_input ) {
+		$this->after_input = $after_input;
+
+		return $this;
+	}
+
+	/**
+	 * @param array $field_map
+	 */
+	public function set_field_map( $field_map ) {
+		$this->field_map = $field_map;
+
+		return $this;
+	}
+
+	/**
+	 * @param array $html_attributes
+	 */
+	public function set_html_attributes( $html_attributes ) {
+		$this->html_attributes = $html_attributes;
+
+		return $this;
+	}
+
+	/**
 	 * Get the field values as an array formatted for Gravity Forms.
 	 *
 	 * @return array
