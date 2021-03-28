@@ -8,6 +8,7 @@
 
 namespace JMichaelWard\GF_Structures\Settings;
 
+use JMichaelWard\GF_Structures\Settings\Choice\ChoiceInterface;
 use JMichaelWard\GF_Structures\Settings\Field\FieldInterface;
 
 /**
@@ -15,7 +16,7 @@ use JMichaelWard\GF_Structures\Settings\Field\FieldInterface;
  *
  * @package JMichaelWard\GF_Structures\Settings
  */
-class Field implements FieldInterface {
+class Field implements FieldInterface, ChoiceInterface {
 	/**
 	 * The field type.
 	 *

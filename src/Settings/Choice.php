@@ -96,72 +96,116 @@ class Choice implements ChoiceInterface {
 	}
 
 	/**
+	 * Set the label property.
+	 *
 	 * @param string $label
 	 */
 	public function set_label( $label ) {
+		if ( ! is_string( $label ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $label must be of type string.' );
+		}
+
 		$this->label = $label;
 
 		return $this;
 	}
 
 	/**
+	 * Set the name property.
+	 *
 	 * @param string $name
 	 */
 	public function set_name( $name ) {
+		if ( ! is_string( $name ) ) {
+			throw new \TypeError( __METHOD__ . ' pamater $name must be of type string.' );
+		}
+
 		$this->name = $name;
 
 		return $this;
 	}
 
 	/**
+	 * Set the value property.
+	 *
 	 * @param string $value
 	 */
 	public function set_value( $value ) {
+		if ( ! is_string( $value ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $value must be of type string.' );
+		}
+
 		$this->value = $value;
 
 		return $this;
 	}
 
 	/**
+	 * Set the default_value property.
+	 *
 	 * @param int $default_value
 	 */
 	public function set_default_value( $default_value ) {
+		if ( ! in_array( $default_value, array( 0, 1 ), true ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $default_value must be of type int with a value of 0 or 1.' );
+		}
+
 		$this->default_value = $default_value;
 
 		return $this;
 	}
 
 	/**
+	 * Set the tooltip property.
+	 *
 	 * @param string $tooltip
 	 */
 	public function set_tooltip( $tooltip ) {
+		if ( ! is_string( $tooltip ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $tooltip must be of type string.' );
+		}
+
 		$this->tooltip = $tooltip;
 
 		return $this;
 	}
 
 	/**
+	 * Set the tooltip class property.
+	 *
 	 * @param string $tooltip_class
 	 */
 	public function set_tooltip_class( $tooltip_class ) {
+		if ( ! is_string( $tooltip_class ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $tooltip_class must be of type string.' );
+		}
+
 		$this->tooltip_class = $tooltip_class;
 
 		return $this;
 	}
 
 	/**
+	 * Set the icon property.
+	 *
 	 * @param string $icon
 	 */
 	public function set_icon( $icon ) {
+		if ( ! is_string( $icon ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $icon must be of type string.' );
+		}
+
 		$this->icon = $icon;
 
 		return $this;
 	}
 
 	/**
+	 * Set all choices on the structure.
+	 *
 	 * @param array $choices
 	 */
-	public function set_choices( $choices ) {
+	public function set_choices( array $choices ) {
 		$this->choices = array();
 
 		foreach ( $choices as $choice ) {
@@ -171,6 +215,13 @@ class Choice implements ChoiceInterface {
 		return $this;
 	}
 
+	/**
+	 * Add a single choice to the choices array.
+	 *
+	 * @param Choice $choice
+	 *
+	 * @return $this
+	 */
 	public function add_choice( Choice $choice ) {
 		$this->choices[] = $choice;
 
