@@ -15,6 +15,8 @@ use JMichaelWard\GF_Structures\Settings\Choice\ChoiceInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Choice implements ChoiceInterface {
+	use Tooltip;
+
 	/**
 	 * The choice label.
 	 *
@@ -51,22 +53,6 @@ class Choice implements ChoiceInterface {
 	 * @var int
 	 */
 	private $default_value = 0;
-
-	/**
-	 * Text content to render in a tooltip for this choice.
-	 *
-	 * Used only for checkboxes and radio buttons.
-	 *
-	 * @var string
-	 */
-	private $tooltip;
-
-	/**
-	 * Value to append to the class attribute of the HTML container element for this choice's tooltip.
-	 *
-	 * @var string
-	 */
-	private $tooltip_class;
 
 	/**
 	 * Either an image URL or classname for an icon.
@@ -156,36 +142,6 @@ class Choice implements ChoiceInterface {
 	}
 
 	/**
-	 * Set the tooltip property.
-	 *
-	 * @param string $tooltip
-	 */
-	public function set_tooltip( $tooltip ) {
-		if ( ! is_string( $tooltip ) ) {
-			throw new \TypeError( __METHOD__ . ' parameter $tooltip must be of type string.' );
-		}
-
-		$this->tooltip = $tooltip;
-
-		return $this;
-	}
-
-	/**
-	 * Set the tooltip class property.
-	 *
-	 * @param string $tooltip_class
-	 */
-	public function set_tooltip_class( $tooltip_class ) {
-		if ( ! is_string( $tooltip_class ) ) {
-			throw new \TypeError( __METHOD__ . ' parameter $tooltip_class must be of type string.' );
-		}
-
-		$this->tooltip_class = $tooltip_class;
-
-		return $this;
-	}
-
-	/**
 	 * Set the icon property.
 	 *
 	 * @param string $icon
@@ -239,8 +195,8 @@ class Choice implements ChoiceInterface {
 			'name'          => $this->name,
 			'value'         => $this->value,
 			'default_value' => $this->default_value,
-			'tooltip'       => $this->tooltip,
-			'tooltip_class' => $this->tooltip_class,
+			'tooltip'       => $this->get_tooltip(),
+			'tooltip_class' => $this->get_tooltip_class(),
 			'icon'          => $this->icon,
 			'choices'       => $this->choices,
 		);

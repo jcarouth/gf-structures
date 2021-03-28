@@ -17,6 +17,8 @@ use JMichaelWard\GF_Structures\Settings\Field\FieldInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Field implements FieldInterface, ChoiceInterface {
+	use Tooltip;
+
 	/**
 	 * The field type.
 	 *
@@ -92,20 +94,6 @@ class Field implements FieldInterface, ChoiceInterface {
 	 * @var string
 	 */
 	private $class;
-
-	/**
-	 * Text content to render in a tooltip for this section.
-	 *
-	 * @var string
-	 */
-	private $tooltip;
-
-	/**
-	 * Value to append to the class attribute of the HTML container element for this field's tooltip.
-	 *
-	 * @var string
-	 */
-	private $tooltip_class;
 
 	/**
 	 * Whether to apply a "display: none;" property on the field's HTML element.
@@ -311,32 +299,6 @@ class Field implements FieldInterface, ChoiceInterface {
 	}
 
 	/**
-	 * @param string $tooltip
-	 */
-	public function set_tooltip( $tooltip ) {
-		if ( ! is_string( $tooltip ) ) {
-			throw new \TypeError( __METHOD__ . ' parameter $tooltip must be of type string.' );
-		}
-
-		$this->tooltip = $tooltip;
-
-		return $this;
-	}
-
-	/**
-	 * @param string $tooltip_class
-	 */
-	public function set_tooltip_class( $tooltip_class ) {
-		if ( ! is_string( $tooltip_class ) ) {
-			throw new \TypeError( __METHOD__ . ' parameter $tooltip_class must be of type string.' );
-		}
-
-		$this->tooltip_class = $tooltip_class;
-
-		return $this;
-	}
-
-	/**
 	 * @param bool $hidden
 	 */
 	public function set_hidden( $hidden ) {
@@ -512,8 +474,8 @@ class Field implements FieldInterface, ChoiceInterface {
 				'label'               => $this->label,
 				'required'            => $this->required,
 				'class'               => $this->class,
-				'tooltip'             => $this->tooltip,
-				'tooltip_class'       => $this->tooltip_class,
+				'tooltip'             => $this->get_tooltip(),
+				'tooltip_class'       => $this->get_tooltip_class(),
 				'hidden'              => $this->hidden,
 				'default_value'       => $this->default_value,
 				'horizontal'          => $this->horizontal,

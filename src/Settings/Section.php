@@ -17,6 +17,8 @@ use JMichaelWard\GF_Structures\Settings\Section\SectionInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Section implements SectionInterface {
+	use Tooltip;
+
 	/**
 	 * The section title.
 	 *
@@ -51,20 +53,6 @@ class Section implements SectionInterface {
 	 * @var string
 	 */
 	private $style;
-
-	/**
-	 * Text content to render in a tooltip for this section.
-	 *
-	 * @var string
-	 */
-	private $tooltip;
-
-	/**
-	 * Value to append to the class attribute of the HTML container element for this section's tooltip.
-	 *
-	 * @var string
-	 */
-	private $tooltip_class;
 
 	/**
 	 * Rules for determining whether a section will display based on the values of a given field or fields.
@@ -234,8 +222,8 @@ class Section implements SectionInterface {
 				'id'            => $this->id,
 				'class'         => $this->class,
 				'style'         => $this->style,
-				'tooltip'       => $this->tooltip,
-				'tooltip_class' => $this->tooltip_class,
+				'tooltip'       => $this->get_tooltip(),
+				'tooltip_class' => $this->get_tooltip_class(),
 				'dependency'    => $this->dependency,
 				'fields'        => $this->get_fields_as_array(),
 			)
