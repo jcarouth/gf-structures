@@ -15,7 +15,7 @@ use JMichaelWard\GF_Structures\Settings\Choice\ChoiceInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Choice implements ChoiceInterface {
-	use Tooltip;
+	use HasTooltip;
 
 	/**
 	 * The choice label.

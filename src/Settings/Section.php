@@ -17,7 +17,7 @@ use JMichaelWard\GF_Structures\Settings\Section\SectionInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Section implements SectionInterface {
-	use Tooltip;
+	use HasTooltip;
 
 	/**
 	 * The section title.

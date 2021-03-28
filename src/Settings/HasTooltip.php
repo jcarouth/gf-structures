@@ -5,11 +5,11 @@
 namespace JMichaelWard\GF_Structures\Settings;
 
 /**
- * Trait Tooltip
+ * Trait HasTooltip
  *
  * @package JMichaelWard\GF_Structures\Settings
  */
-trait Tooltip {
+trait HasTooltip {
 	/**
 	 * Text content to render in a tooltip for this element.
 	 *

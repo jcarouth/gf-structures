@@ -17,7 +17,7 @@ use JMichaelWard\GF_Structures\Settings\Field\FieldInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Field implements FieldInterface, ChoiceInterface {
-	use Tooltip;
+	use HasTooltip;
 
 	/**
 	 * The field type.
