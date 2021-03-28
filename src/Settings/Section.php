@@ -9,6 +9,7 @@
 namespace JMichaelWard\GF_Structures\Settings;
 
 use JMichaelWard\GF_Structures\ArrayFormattable;
+use JMichaelWard\GF_Structures\Settings\Section\SectionInterface;
 
 /**
  * Class Section

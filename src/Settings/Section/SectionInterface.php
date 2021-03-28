@@ -5,7 +5,7 @@
  * @package JMichaelWard\GF_Structures\Settings
  */
 
-namespace JMichaelWard\GF_Structures\Settings;
+namespace JMichaelWard\GF_Structures\Settings\Section;
 
 use JMichaelWard\GF_Structures\ArrayFormattable;
 
