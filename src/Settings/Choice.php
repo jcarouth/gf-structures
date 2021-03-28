@@ -70,7 +70,7 @@ class Choice implements ChoiceInterface {
 	 * @see Choice
 	 * @var array
 	 */
-	private $choices;
+	private $choices = array();
 
 	/**
 	 * Choice constructor.
@@ -184,21 +184,29 @@ class Choice implements ChoiceInterface {
 		return $this;
 	}
 
+	public function get_choices_as_array() {
+		return array_map( function( ChoiceInterface $choice ) {
+			return $choice->get_as_array();
+		}, $this->choices );
+	}
+
 	/**
 	 * Get the choice as a formatted array.
 	 *
 	 * @return array
 	 */
 	public function get_as_array() {
-		return array(
-			'label'         => $this->label,
-			'name'          => $this->name,
-			'value'         => $this->value,
-			'default_value' => $this->default_value,
-			'tooltip'       => $this->get_tooltip(),
-			'tooltip_class' => $this->get_tooltip_class(),
-			'icon'          => $this->icon,
-			'choices'       => $this->choices,
+		return array_filter(
+			array(
+				'label'         => $this->label,
+				'name'          => $this->name,
+				'value'         => $this->value,
+				'default_value' => $this->default_value,
+				'tooltip'       => $this->get_tooltip(),
+				'tooltip_class' => $this->get_tooltip_class(),
+				'icon'          => $this->icon,
+				'choices'       => $this->get_choices_as_array(),
+			)
 		);
 	}
 }

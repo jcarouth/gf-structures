@@ -149,7 +149,7 @@ class Field implements FieldInterface, ChoiceInterface {
 	 * @see Choice
 	 * @var array
 	 */
-	private $choices;
+	private $choices = array();
 
 	/**
 	 * Callback method that returns true or false to present field feedback in the UI.
@@ -351,6 +351,8 @@ class Field implements FieldInterface, ChoiceInterface {
 	}
 
 	/**
+	 * Set an array of choices all at once.
+	 *
 	 * @param array $choices
 	 */
 	public function set_choices( array $choices ) {
@@ -364,6 +366,8 @@ class Field implements FieldInterface, ChoiceInterface {
 	}
 
 	/**
+	 * Add a single choice to the field at a time.
+	 *
 	 * @param Choice $choice Instance of a Choice object.
 	 *
 	 * @return $this
@@ -460,6 +464,17 @@ class Field implements FieldInterface, ChoiceInterface {
 	}
 
 	/**
+	 * Get all field choices as a formatted array.
+	 *
+	 * @return array
+	 */
+	public function get_choices_as_array() {
+		return array_map( function( ChoiceInterface $choice ) {
+			return $choice->get_as_array();
+		}, $this->choices );
+	}
+
+	/**
 	 * Get the field values as an array formatted for Gravity Forms.
 	 *
 	 * @return array
@@ -480,7 +495,7 @@ class Field implements FieldInterface, ChoiceInterface {
 				'default_value'       => $this->default_value,
 				'horizontal'          => $this->horizontal,
 				'dependency'          => $this->dependency,
-				'choices'             => $this->choices,
+				'choices'             => $this->get_choices_as_array(),
 				'feedback_callback'   => $this->feedback_callback,
 				'callback'            => $this->callback,
 				'validation_callback' => $this->validation_callback,

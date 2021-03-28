@@ -27,4 +27,11 @@ interface ChoiceInterface extends ArrayFormattable {
 	 * @param array $choices
 	 */
 	public function set_choices( array $choices );
+
+	/**
+	 * Get an array of choices as an array.
+	 *
+	 * @return array
+	 */
+	public function get_choices_as_array();
 }
