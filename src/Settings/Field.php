@@ -212,7 +212,7 @@ class Field implements FieldInterface {
 	 * @see Field::$type
 	 * @var array
 	 */
-	private $field_map;
+	private $field_map = array();
 
 	/**
 	 * Additional HTML attributes to apply to the field.
@@ -371,7 +371,7 @@ class Field implements FieldInterface {
 	 */
 	public function set_dependency( $dependency ) {
 		if ( ! $dependency instanceof Field ) {
-			throw new \TypeError( __METHOD__ . ' parameter $dependency must be an instance of ' . __CLASS__ );
+			throw new \TypeError( __METHOD__ . ' parameter $dependency must be an instance of ' . __NAMESPACE__ . '\\Field.' );
 		}
 
 		$this->dependency = $dependency;
@@ -382,8 +382,23 @@ class Field implements FieldInterface {
 	/**
 	 * @param array $choices
 	 */
-	public function set_choices( $choices ) {
-		$this->choices = $choices;
+	public function set_choices( array $choices ) {
+		$this->choices = array();
+
+		foreach ( $choices as $choice ) {
+			$this->add_choice( $choice );
+		}
+
+		return $this;
+	}
+
+	/**
+	 * @param Choice $choice Instance of a Choice object.
+	 *
+	 * @return $this
+	 */
+	public function add_choice( Choice $choice ) {
+		$this->choices[] = $choice;
 
 		return $this;
 	}
@@ -392,6 +407,10 @@ class Field implements FieldInterface {
 	 * @param array|string $feedback_callback
 	 */
 	public function set_feedback_callback( $feedback_callback ) {
+		if ( ! is_callable( $feedback_callback ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $feedback_callback must be a callable method.' );
+		}
+
 		$this->feedback_callback = $feedback_callback;
 
 		return $this;
@@ -401,6 +420,10 @@ class Field implements FieldInterface {
 	 * @param array|string $callback
 	 */
 	public function set_callback( $callback ) {
+		if ( ! is_callable( $callback ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $callback must be a callable method.' );
+		}
+
 		$this->callback = $callback;
 
 		return $this;
@@ -410,6 +433,10 @@ class Field implements FieldInterface {
 	 * @param array|string $validation_callback
 	 */
 	public function set_validation_callback( $validation_callback ) {
+		if ( ! is_callable( $validation_callback ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $validation_callback must be a callable method.' );
+		}
+
 		$this->validation_callback = $validation_callback;
 
 		return $this;
@@ -419,6 +446,10 @@ class Field implements FieldInterface {
 	 * @param string $after_input
 	 */
 	public function set_after_input( $after_input ) {
+		if ( ! is_string( $after_input ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $after_input must be of type string.' );
+		}
+
 		$this->after_input = $after_input;
 
 		return $this;
@@ -428,7 +459,22 @@ class Field implements FieldInterface {
 	 * @param array $field_map
 	 */
 	public function set_field_map( $field_map ) {
+		if ( ! $field_map instanceof Field ) {
+			throw new \TypeError( __METHOD__ . ' parameter $field_map must be an instance of ' . __NAMESPACE__ . '\\Field.' );
+		}
+
 		$this->field_map = $field_map;
+
+		return $this;
+	}
+
+	/**
+	 * @param FieldInterface $field
+	 *
+	 * @return $this
+	 */
+	public function add_field_map( FieldInterface $field ) {
+		$this->field_map[] = $field;
 
 		return $this;
 	}
