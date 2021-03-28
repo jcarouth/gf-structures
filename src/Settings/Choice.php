@@ -78,22 +78,11 @@ class Choice implements ChoiceInterface {
 	 * @param string $label The choice label.
 	 */
 	public function __construct( $label ) {
-		$this->label = $this->set_label( $label );
-	}
-
-	/**
-	 * Set the label property.
-	 *
-	 * @param string $label
-	 */
-	public function set_label( $label ) {
 		if ( ! is_string( $label ) ) {
 			throw new \TypeError( __METHOD__ . ' parameter $label must be of type string.' );
 		}
 
 		$this->label = $label;
-
-		return $this;
 	}
 
 	/**
