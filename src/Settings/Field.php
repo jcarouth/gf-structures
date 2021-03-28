@@ -233,8 +233,44 @@ class Field implements FieldInterface, ChoiceInterface {
 	 * @param string $name The field name.
 	 */
 	public function __construct( $type, $name ) {
+		$this->type = $this->set_type( $type );
+		$this->name = $this->set_name( $name );
+	}
+
+	/**
+	 * Set the field type.
+	 *
+	 * @see Field::$type
+	 * @param string $type
+	 *
+	 * @return $this
+	 */
+	public function set_type( $type ) {
+		if ( ! is_string( $type ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $type must be of type string.' );
+		}
+
 		$this->type = $type;
+
+		return $this;
+	}
+
+	/**
+	 * Set the field name.
+	 *
+	 * @see Field::$name
+	 * @param string $name
+	 *
+	 * @return $this
+	 */
+	public function set_name( $name ) {
+		if ( ! is_string( $name ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $name must be of type name.' );
+		}
+
 		$this->name = $name;
+
+		return $this;
 	}
 
 	/**
