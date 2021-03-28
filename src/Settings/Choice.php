@@ -87,6 +87,97 @@ class Choice implements ChoiceInterface {
 	private $choices;
 
 	/**
+	 * Choice constructor.
+	 *
+	 * @param string $label The choice label.
+	 */
+	public function __construct( $label ) {
+		$this->label = $this->set_label( $label );
+	}
+
+	/**
+	 * @param string $label
+	 */
+	public function set_label( $label ) {
+		$this->label = $label;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function set_name( $name ) {
+		$this->name = $name;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $value
+	 */
+	public function set_value( $value ) {
+		$this->value = $value;
+
+		return $this;
+	}
+
+	/**
+	 * @param int $default_value
+	 */
+	public function set_default_value( $default_value ) {
+		$this->default_value = $default_value;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $tooltip
+	 */
+	public function set_tooltip( $tooltip ) {
+		$this->tooltip = $tooltip;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $tooltip_class
+	 */
+	public function set_tooltip_class( $tooltip_class ) {
+		$this->tooltip_class = $tooltip_class;
+
+		return $this;
+	}
+
+	/**
+	 * @param string $icon
+	 */
+	public function set_icon( $icon ) {
+		$this->icon = $icon;
+
+		return $this;
+	}
+
+	/**
+	 * @param array $choices
+	 */
+	public function set_choices( $choices ) {
+		$this->choices = array();
+
+		foreach ( $choices as $choice ) {
+			$this->add_choice( $choice );
+		}
+
+		return $this;
+	}
+
+	public function add_choice( Choice $choice ) {
+		$this->choices[] = $choice;
+
+		return $this;
+	}
+
+	/**
 	 * Get the choice as a formatted array.
 	 *
 	 * @return array
