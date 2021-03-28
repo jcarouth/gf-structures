@@ -7,12 +7,14 @@
 
 namespace JMichaelWard\GF_Structures\Settings;
 
+use JMichaelWard\GF_Structures\Settings\Choice\ChoiceInterface;
+
 /**
  * Class Choice
  *
  * @package JMichaelWard\GF_Structures\Settings
  */
-class Choice {
+class Choice implements ChoiceInterface {
 	/**
 	 * The choice label.
 	 *
@@ -83,4 +85,22 @@ class Choice {
 	 * @var array
 	 */
 	private $choices;
+
+	/**
+	 * Get the choice as a formatted array.
+	 *
+	 * @return array
+	 */
+	public function get_as_array() {
+		return array(
+			'label'         => $this->label,
+			'name'          => $this->name,
+			'value'         => $this->value,
+			'default_value' => $this->default_value,
+			'tooltip'       => $this->tooltip,
+			'tooltip_class' => $this->tooltip_class,
+			'icon'          => $this->icon,
+			'choices'       => $this->choices,
+		);
+	}
 }
