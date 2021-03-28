@@ -17,6 +17,7 @@ use JMichaelWard\GF_Structures\Settings\Field\FieldInterface;
  * @package JMichaelWard\GF_Structures\Settings
  */
 class Field implements FieldInterface, ChoiceInterface {
+	use HasChoices;
 	use HasTooltip;
 
 	/**
@@ -138,18 +139,6 @@ class Field implements FieldInterface, ChoiceInterface {
 	 * @var Field
 	 */
 	private $dependency;
-
-	/**
-	 * Array of choices.
-	 *
-	 * This value is required for radio, checkbox, and select field types.
-	 *
-	 * This library will incorporate the Choice object to provide an interface for registering choices.
-	 *
-	 * @see Choice
-	 * @var array
-	 */
-	private $choices = array();
 
 	/**
 	 * Callback method that returns true or false to present field feedback in the UI.
@@ -351,34 +340,6 @@ class Field implements FieldInterface, ChoiceInterface {
 	}
 
 	/**
-	 * Set an array of choices all at once.
-	 *
-	 * @param array $choices
-	 */
-	public function set_choices( array $choices ) {
-		$this->choices = array();
-
-		foreach ( $choices as $choice ) {
-			$this->add_choice( $choice );
-		}
-
-		return $this;
-	}
-
-	/**
-	 * Add a single choice to the field at a time.
-	 *
-	 * @param Choice $choice Instance of a Choice object.
-	 *
-	 * @return $this
-	 */
-	public function add_choice( Choice $choice ) {
-		$this->choices[] = $choice;
-
-		return $this;
-	}
-
-	/**
 	 * @param array|string $feedback_callback
 	 */
 	public function set_feedback_callback( $feedback_callback ) {
@@ -461,17 +422,6 @@ class Field implements FieldInterface, ChoiceInterface {
 		$this->html_attributes = $html_attributes;
 
 		return $this;
-	}
-
-	/**
-	 * Get all field choices as a formatted array.
-	 *
-	 * @return array
-	 */
-	public function get_choices_as_array() {
-		return array_map( function( ChoiceInterface $choice ) {
-			return $choice->get_as_array();
-		}, $this->choices );
 	}
 
 	/**
