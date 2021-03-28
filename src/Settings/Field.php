@@ -240,6 +240,10 @@ class Field implements FieldInterface {
 	 * @param string $input_type
 	 */
 	public function set_input_type( $input_type ) {
+		if ( ! is_string( $input_type ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $input_type must be of type string.' );
+		}
+
 		$this->input_type = $input_type;
 
 		return $this;
@@ -249,6 +253,10 @@ class Field implements FieldInterface {
 	 * @param string $id
 	 */
 	public function set_id( $id ) {
+		if ( ! is_string( $id ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $id must be of type string.' );
+		}
+
 		$this->id = $id;
 
 		return $this;
@@ -258,6 +266,10 @@ class Field implements FieldInterface {
 	 * @param string $label
 	 */
 	public function set_label( $label ) {
+		if ( ! is_string( $label ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $label must be of type string.' );
+		}
+
 		$this->label = $label;
 
 		return $this;
@@ -267,6 +279,10 @@ class Field implements FieldInterface {
 	 * @param bool $required
 	 */
 	public function set_required( $required ) {
+		if ( ! is_bool( $required ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $required must be of type boolean.' );
+		}
+
 		$this->required = $required;
 
 		return $this;
@@ -276,6 +292,10 @@ class Field implements FieldInterface {
 	 * @param string $class
 	 */
 	public function set_class( $class ) {
+		if ( ! is_string( $class ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $class must be of type string.' );
+		}
+
 		$this->class = $class;
 
 		return $this;
@@ -285,6 +305,10 @@ class Field implements FieldInterface {
 	 * @param string $tooltip
 	 */
 	public function set_tooltip( $tooltip ) {
+		if ( ! is_string( $tooltip ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $tooltip must be of type string.' );
+		}
+
 		$this->tooltip = $tooltip;
 
 		return $this;
@@ -294,6 +318,10 @@ class Field implements FieldInterface {
 	 * @param string $tooltip_class
 	 */
 	public function set_tooltip_class( $tooltip_class ) {
+		if ( ! is_string( $tooltip_class ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $tooltip_class must be of type string.' );
+		}
+
 		$this->tooltip_class = $tooltip_class;
 
 		return $this;
@@ -303,6 +331,10 @@ class Field implements FieldInterface {
 	 * @param bool $hidden
 	 */
 	public function set_hidden( $hidden ) {
+		if ( ! is_bool( $hidden ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $hidden must be of type boolean.' );
+		}
+
 		$this->hidden = $hidden;
 
 		return $this;
@@ -312,6 +344,10 @@ class Field implements FieldInterface {
 	 * @param string $default_value
 	 */
 	public function set_default_value( $default_value ) {
+		if ( ! is_string( $default_value ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $default_value must be of type string.' );
+		}
+
 		$this->default_value = $default_value;
 
 		return $this;
@@ -321,6 +357,10 @@ class Field implements FieldInterface {
 	 * @param bool $horizontal
 	 */
 	public function set_horizontal( $horizontal ) {
+		if ( ! is_bool( $horizontal ) ) {
+			throw new \TypeError( __METHOD__ . ' parameter $horizontal must be of type boolean.' );
+		}
+
 		$this->horizontal = $horizontal;
 
 		return $this;
@@ -330,6 +370,10 @@ class Field implements FieldInterface {
 	 * @param Field $dependency
 	 */
 	public function set_dependency( $dependency ) {
+		if ( ! $dependency instanceof Field ) {
+			throw new \TypeError( __METHOD__ . ' parameter $dependency must be an instance of ' . __CLASS__ );
+		}
+
 		$this->dependency = $dependency;
 
 		return $this;
