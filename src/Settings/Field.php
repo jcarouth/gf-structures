@@ -8,14 +8,14 @@
 
 namespace JMichaelWard\GF_Structures\Settings;
 
-use JMichaelWard\GF_Structures\ArrayFormattable;
+use JMichaelWard\GF_Structures\Settings\Field\FieldInterface;
 
 /**
  * Class Field
  *
  * @package JMichaelWard\GF_Structures\Settings
  */
-class Field implements ArrayFormattable {
+class Field implements FieldInterface {
 	/**
 	 * The field type.
 	 *
