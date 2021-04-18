@@ -4,7 +4,6 @@ namespace JMichaelWard\GF_Structures\Tests\Settings;
 
 use JMichaelWard\GF_Structures\Settings\Choice\ChoiceInterface;
 use JMichaelWard\GF_Structures\Settings\HasChoices;
-use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 class HasChoicesTest extends TestCase
@@ -45,9 +44,9 @@ class HasChoicesTest extends TestCase
 	}
 
 	/**
-	 * @return ChoiceInterface|Stub
+	 * @return ChoiceInterface
 	 */
-	protected function getChoiceStub($label): ChoiceInterface|Stub
+	protected function getChoiceStub($label): ChoiceInterface
 	{
 		$choiceStub = $this->createStub(ChoiceInterface::class);
 		$choiceStub->method('get_as_array')

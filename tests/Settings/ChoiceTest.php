@@ -21,9 +21,26 @@ class ChoiceTest extends TestCase
 	{
 		$this->expectException(TypeError::class);
 		new Choice();
+	}
 
-		$emptyLabel = new Choice('');
-		$this->expectEquals('', $emptyLabel->get_as_array()['label']);
+	public function testLabelMustBeString()
+	{
+		$this->expectException(TypeError::class);
+		new Choice(1);
+	}
+
+	public function testLabelCannotBeEmpty()
+	{
+		$choice = new Choice('');
+		$this->assertEquals(array(), $choice->get_as_array());
+	}
+
+	public function testNameCannotBeNull()
+	{
+		$choice = new Choice('Test Choice');
+
+		$this->expectException(TypeError::class);
+		$choice->set_name(null);
 	}
 
 	public function testSetName()
@@ -31,9 +48,6 @@ class ChoiceTest extends TestCase
 		$choice = new Choice('Test Choice');
 
 		$this->assertArrayNotHasKey('name', $choice->get_as_array());
-
-		$this->expectException(TypeError::class);
-		$choice->set_name(null);
 
 		$choice->set_name('testchoice');
 		$this->assertArrayHasKey('name', $choice->get_as_array());
