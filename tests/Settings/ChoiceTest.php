@@ -20,7 +20,7 @@ class ChoiceTest extends TestCase
 	public function testLabelIsRequired()
 	{
 		$this->expectException(TypeError::class);
-		new Choice();
+		new Choice(null);
 	}
 
 	public function testLabelMustBeString()
